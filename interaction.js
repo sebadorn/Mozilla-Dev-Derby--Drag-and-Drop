@@ -3,8 +3,12 @@
 
 var PondInteract = {
 
+	// Config
+	_pauseMouseRipple: 600, // [ms]
 
+	// Not config
 	_pond: null,
+	_lastMouseRipple: 0,
 
 
 	/**
@@ -15,11 +19,14 @@ var PondInteract = {
 		this._pond = pond;
 		PondAnimate.init( pond );
 		this._registerDragDropListener();
+		this._pond.addEventListener( "mousemove", function( e ) {
+			var now = Date.now();
 
-		// FOR TESTING ONLY
-		this._pond.addEventListener( "click", function( e ) {
-			PondAnimate.showRipple( e.clientX, e.clientY );
-		} );
+			if( PondInteract._lastMouseRipple < now - PondInteract._pauseMouseRipple ) {
+				PondAnimate.showRipple( e.clientX, e.clientY );
+			}
+			PondInteract._lastMouseRipple = now;
+		}, false );
 	},
 
 
@@ -68,15 +75,14 @@ var PondInteract = {
 			var reader = new FileReader();
 
 			reader.onload = function() {
-				var fileAsString = reader.result;
+				var fileAsString = reader.result,
+				    words = fileAsString.split( ' ' ).splice( 0, 4 );
+
+				PondAnimate.showRipple( e.clientX, e.clientY, words );
 			};
 
 			reader.readAsText( e.dataTransfer.files[0] );
 		}
-
-		var mouse = { x: e.clientX, y: e.clientY };
-
-		PondAnimate.showRipples( mouse );
 	}
 
 

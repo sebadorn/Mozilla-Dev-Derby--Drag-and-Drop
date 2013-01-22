@@ -60,7 +60,6 @@ var PondAnimate = {
 
 		// Clear canvas
 		pa._pond.width = pa._pond.width;
-		pa._pond.height = pa._pond.height;
 
 		// Merge with waiting queue
 		pa._animatableObjects = pa._animatableObjects.concat( pa._animatableObjectsWaiting );
@@ -92,9 +91,10 @@ var PondAnimate = {
 	 * Show a ripple at the given position.
 	 * @param {int} x X coordinate of the center of the ripple.
 	 * @param {int} y Y coordinate of the center of the ripple.
+	 * @param {Array} words Words to display along with the ripple.
 	 */
-	showRipple: function( x, y ) {
-		this._animatableObjectsWaiting.push( new Ripple( x, y ) );
+	showRipple: function( x, y, words ) {
+		this._animatableObjectsWaiting.push( new Ripple( x, y, words ) );
 	},
 
 
