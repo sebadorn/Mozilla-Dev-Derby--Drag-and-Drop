@@ -1,0 +1,216 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body, button {
+	font-family: "Crafty Girls", monospace;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #202020;
+	text-align: center;
+}
+
+.wrapper {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.helper {
+	display: inline-block;
+	height: 100%;
+	padding: 0;
+	vertical-align: middle;
+}
+
+#stage {
+	background-color: #f2f2f2;
+	background-image: url( "img/level0.gif" );
+	display: block;
+	height: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	width: 900px;
+}
+
+button {
+	background-color: #292929;
+	border: 0;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 26px;
+	padding: 2px 10px 1px;
+}
+
+button:hover {
+	background-color: #c43f42;
+}
+
+#msgBox {
+	background-color: #356E8E;
+	color: #ffffff;
+	font-size: 24px;
+	line-height: 34px;
+	padding: 12px 40px;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 820px;
+	z-index: 100;
+}
+
+#next {
+	position: absolute;
+	z-index: 200;
+}
+
+#pete {
+	background-repeat: no-repeat;
+}
+
+.back {
+	background-image: url( "img/pete_back.gif" );
+	height: 300px;
+	width: 100px;
+}
+
+.fighting_stance {
+	background-image: url( "img/pete_fight.gif" );
+	height: 301px;
+	width: 185px;
+}
+
+.hold_note {
+	background-image: url( "img/pete_note.gif" );
+	height: 300px;
+	width: 122px;
+}
+
+.shirt {
+	background-image: url( "img/pete_shirt.gif" );
+	height: 600px;
+	width: 491px;
+}
+
+.onwards {
+	background-image: url( "img/pete_onwards.gif" );
+	height: 300px;
+	width: 133px;
+}
+
+
+/* level specific */
+
+/* level 0 */
+
+.level0 #pete {
+	margin: 200px auto 0;
+}
+
+.level0 #next {
+	left: 520px;
+	top: 299px;
+}
+
+
+/* level 1 */
+
+.level1 #pete {
+	bottom: 10px;
+	left: 60px;
+	position: absolute;
+	z-index: 20;
+}
+
+.level1 #next {
+	bottom: 270px;
+	left: 560px;
+}
+
+.monster {
+	background-image: url( "img/monster.gif" );
+	bottom: 50px;
+	height: 336px;
+	position: absolute;
+	right: 30px;
+	width: 500px;
+	z-index: 10;
+}
+
+.defeated {
+	background-image: url( "img/monster_defeated.gif" ) !important;
+	height: 155px !important;
+}
+
+
+/* level 2 */
+
+.level2 #pete {
+	bottom: 10px;
+	left: 100px;
+	position: absolute;
+	z-index: 20;
+}
+
+.level2 #next {
+	bottom: 250px;
+	left: 250px;
+}
+
+.note {
+	background-image: url( "img/note.gif" );
+	bottom: 86px;
+	cursor: pointer;
+	height: 55px;
+	opacity: 0.5;
+	position: absolute;
+	right: 260px;
+	width: 40px;
+	z-index: 15;
+}
+
+
+/* level 3 */
+
+.level3 #stage {
+	background: #303030 url( "img/pete_shirt.gif" ) bottom center no-repeat;
+}
+
+.level3 #pete {
+	display: none;
+}
+
+.level3 #next {
+	left: 406px;
+	top: 296px;
+}
+
+.shirt_dropzone {
+	background-color: #d0d0d0;
+	display: block;
+	height: 260px;
+	margin: 0 auto;
+	position: relative;
+	top: 360px;
+	width: 260px;
+}
+
+
+/* level 4 */
+
+.level4 #stage {
+	background: #f2f2f2 url( "img/invastion.gif" ) center repeat;
+}
+
+.level4 #pete {
+	margin: 0 auto;
+	position: relative;
+	top: 190px;
+}
