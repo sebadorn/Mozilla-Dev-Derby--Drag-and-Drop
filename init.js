@@ -20,6 +20,8 @@ var PATH;
 function init() {
 	var d = document;
 
+	preloadImages();
+
 	GLOBAL.stage = d.getElementById( "stage" ),
 	GLOBAL.pete = d.getElementById( "pete" ),
 	GLOBAL.msgBox = d.getElementById( "msgBox" );
@@ -29,8 +31,31 @@ function init() {
 	PATH = [Level0, Level1, Level2, Level3, Level4];
 
 	nextLevel();
-	nextLevel(); nextLevel(); nextLevel();
 };
+
+
+/**
+ * Preload the needed images.
+ */
+function preloadImages() {
+	var images = [],
+	    preload = [
+	    	"monster.gif",
+	    	"monster_defeated.gif",
+	    	"note.gif",
+	    	"pete_back.gif",
+	    	"pete_fight.gif",
+	    	"pete_note.gif",
+	    	"pete_onwards.gif",
+	    	"pete_shirt.gif",
+	    	"shirt_placeholder.gif"
+	    ];
+
+	for( var i = 0; i < preload.length; i++ ) {
+		images[i] = new Image();
+		images[i].src = "img/" + preload[i];
+	}
+}
 
 
 /**
