@@ -50,11 +50,11 @@ button {
 }
 
 button:hover {
-	background-color: #c43f42;
+	background-color: #2D246C;
 }
 
 #msgBox {
-	background-color: #356E8E;
+	background-color: rgba( 55, 72, 82, 0.8 );
 	color: #ffffff;
 	font-size: 24px;
 	line-height: 34px;
@@ -101,7 +101,7 @@ button:hover {
 
 .onwards {
 	background-image: url( "img/pete_onwards.gif" );
-	height: 300px;
+	height: 600px;
 	width: 133px;
 }
 
@@ -166,10 +166,10 @@ button:hover {
 
 .note {
 	background-image: url( "img/note.gif" );
-	bottom: 86px;
+	bottom: 98px;
 	cursor: pointer;
 	height: 55px;
-	opacity: 0.5;
+	opacity: 0.4;
 	position: absolute;
 	right: 260px;
 	width: 40px;
@@ -206,7 +206,7 @@ button:hover {
 /* level 4 */
 
 .level4 #stage {
-	background: #f2f2f2 url( "img/invasion.gif" ) center repeat;
+	background: #f2f2f2 url( "img/level4.gif" ) center repeat;
 }
 
 .level4 #pete {

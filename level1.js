@@ -6,8 +6,8 @@ var Level1 = {
 
 	number: 1,
 	pete: "fighting_stance",
-	text: "A monster attacks! Looks very squishy.<br />"
-	      + "Wonder what happens when you drop something heavy on it.",
+	text: "A squishy-looking monster attacks! Wonder what<br />"
+	      + "happens if you drop something heavy on it.",
 
 	SIZE_TO_DEFEAT_MONSTER: 1000000,
 	_drop: null,

@@ -31,6 +31,7 @@ function init() {
 	PATH = [Level0, Level1, Level2, Level3, Level4];
 
 	nextLevel();
+	// nextLevel(); nextLevel(); nextLevel(); nextLevel();
 };
 
 
@@ -40,6 +41,8 @@ function init() {
 function preloadImages() {
 	var images = [],
 	    preload = [
+	    	"level0.gif",
+	    	"level4.gif",
 	    	"monster.gif",
 	    	"monster_defeated.gif",
 	    	"note.gif",
