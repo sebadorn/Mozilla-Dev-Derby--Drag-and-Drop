@@ -11,6 +11,7 @@ var Level1 = {
 
 	SIZE_TO_DEFEAT_MONSTER: 1000000,
 	_drop: null,
+	_monster: null,
 
 
 	/**
@@ -31,6 +32,8 @@ var Level1 = {
 
 		frag.appendChild( monster );
 		frag.appendChild( drop );
+
+		this._monster = monster;
 		this._drop = drop;
 
 		return frag;
@@ -46,11 +49,57 @@ var Level1 = {
 		if( e.dataTransfer.files.length ) {
 			var file = e.dataTransfer.files[0];
 
-			if( file.size >= Level1.SIZE_TO_DEFEAT_MONSTER ) {
-				e.target.className = "monster defeated";
-				showNextButton();
-			}
+			Level1.showDrop( file.size );
 		}
+	},
+
+
+	/**
+	 * If file is big enough, the monster will be defeated.
+	 * If not, try again.
+	 * @param {int} size File size in bytes.
+	 */
+	defeatMonster: function( size ) {
+		if( size >= Level1.SIZE_TO_DEFEAT_MONSTER ) {
+			Level1._monster.className = "monster defeated";
+			GLOBAL.pete.className = "slime";
+			setMessage( "Well, that did the job." );
+			showNextButton();
+		}
+		else {
+			setMessage( "This slime monster can take at least 1 MB!" );
+		}
+	},
+
+
+	/**
+	 * Show drop animation.
+	 * @param {int} size File size in bytes.
+	 */
+	showDrop: function( filesize ) {
+		var size = filesize,
+		    unit = " B";
+
+		if( size >= 1024 ) {
+			size /= 1024;
+			unit = " KB";
+		}
+		if( size >= 1024 ) {
+			size /= 1024;
+			unit = " MB";
+		}
+		if( size >= 1024 ) {
+			size /= 1024;
+			unit = " GB";
+		}
+
+		this._drop.textContent = Math.round( size ) + unit;
+		this._drop.className = "drop animate";
+
+		setTimeout( function() {
+			Level1._drop.className = "drop";
+			Level1.defeatMonster( filesize );
+		}, 2000 );
 	}
 
 

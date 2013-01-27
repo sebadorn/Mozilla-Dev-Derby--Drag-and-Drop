@@ -6,7 +6,7 @@ var Level3 = {
 
 	number: 3,
 	pete: "shirt",
-	text: "He's covered in slime. Yuk! Pete changes his shirt.<br />"
+	text: "Pete is covered in slime. Yuk! He changes his shirt.<br />"
 	      + "Hey, nice picture!",
 
 
@@ -44,6 +44,7 @@ var Level3 = {
 			var file = e.dataTransfer.files[0];
 
 			if( !file.type.match( "image.*" ) ) {
+				setMessage( "This cannot be put on a shirt, silly." );
 				return;
 			}
 
@@ -51,6 +52,7 @@ var Level3 = {
 
 			reader.onload = function() {
 				Level3._shirt.src = reader.result;
+				setMessage( "Awesome!" );
 				showNextButton();
 			}
 

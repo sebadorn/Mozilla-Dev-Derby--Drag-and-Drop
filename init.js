@@ -31,7 +31,6 @@ function init() {
 	PATH = [Level0, Level1, Level2, Level3, Level4];
 
 	nextLevel();
-	// nextLevel(); nextLevel(); nextLevel(); nextLevel();
 };
 
 
@@ -47,10 +46,12 @@ function preloadImages() {
 	    	"monster_defeated.gif",
 	    	"note.gif",
 	    	"pete_back.gif",
+	    	"pete_back_slime.gif",
 	    	"pete_fight.gif",
 	    	"pete_note.gif",
 	    	"pete_onwards.gif",
 	    	"pete_shirt.gif",
+	    	"pete_slime.gif",
 	    	"shirt_placeholder.gif"
 	    ];
 
@@ -98,7 +99,7 @@ function nextLevel() {
 
 	document.body.className = "level" + lvl.number;
 	GLOBAL.pete.className = lvl.pete;
-	GLOBAL.msgBox.innerHTML = lvl.text;
+	setMessage( lvl.text );
 
 	if( props ) {
 		GLOBAL.stage.appendChild( props );
@@ -107,13 +108,22 @@ function nextLevel() {
 
 
 /**
+ * Sets the text for the message box.
+ * @param {String} msg Text/HTML.
+ */
+function setMessage( msg ) {
+	GLOBAL.msgBox.innerHTML = msg;
+};
+
+
+/**
  * Show the button to proceed to the next level.
  */
 function showNextButton() {
 	GLOBAL.nextBtn.style.display = "block";
-}
+};
 
 
 function stop( e ) {
 	e.preventDefault();
-}
+};

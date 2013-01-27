@@ -50,7 +50,8 @@ button {
 }
 
 button:hover {
-	background-color: #2D246C;
+	background-color: #ffffff;
+	color: #292929;
 }
 
 #msgBox {
@@ -87,6 +88,18 @@ button:hover {
 	width: 185px;
 }
 
+.slime {
+	background-image: url( "img/pete_slime.gif" );
+	height: 301px;
+	width: 185px;
+}
+
+.back_slime {
+	background-image: url( "img/pete_back_slime.gif" );
+	height: 300px;
+	width: 100px;
+}
+
 .hold_note {
 	background-image: url( "img/pete_note.gif" );
 	height: 300px;
@@ -119,6 +132,12 @@ button:hover {
 	top: 299px;
 }
 
+.flip_x,
+.level0 #next:hover ~ #pete {
+	transform: scalex( -1 );
+	-webkit-transform: scalex( -1 );
+}
+
 
 /* level 1 */
 
@@ -132,6 +151,26 @@ button:hover {
 .level1 #next {
 	bottom: 270px;
 	left: 560px;
+}
+
+.drop {
+	background-color: #404040;
+	border: 3px solid #ff0000;
+	color: #ffffff;
+	font-family: monospace;
+	font-size: 24px;
+	font-weight: bold;
+	left: 560px;
+	padding: 4px;
+	position: absolute;
+	top: -50px;
+	white-space: nowrap;
+}
+
+.drop.animate {
+	top: 260px !important;
+	transition: top 2s linear;
+	-webkit-transition: top 2s linear;
 }
 
 .monster {
@@ -188,18 +227,19 @@ button:hover {
 }
 
 .level3 #next {
-	left: 406px;
+	left: 408px;
 	top: 296px;
 }
 
 .shirt_dropzone {
-	background-color: #d0d0d0;
 	display: block;
-	height: 260px;
 	margin: 0 auto;
+	max-height: 260px;
+	max-width: 260px;
+	min-height: 100px;
+	min-width: 100px;
 	position: relative;
 	top: 360px;
-	width: 260px;
 }
 
 

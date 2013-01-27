@@ -5,9 +5,9 @@ var Level2 = {
 
 
 	number: 2,
-	pete: "back",
-	text: "There is a note in the dead slime lump. Pete refuses to touch it.<br />"
-	      + "<em>(Sigh)</em> Can you get it for him?",
+	pete: "back_slime",
+	text: "There is a note in the dead slime lump. Pete refuses<br />"
+	      + "to touch it. <em>(Sigh)</em> Can you get it for him?",
 
 	_note: null,
 
@@ -28,7 +28,8 @@ var Level2 = {
 		// Drag and Drop
 		note.draggable = "true";
 		note.addEventListener( "dragstart", this.dragNote, false );
-		p.addEventListener( "dragenter", stop, false );
+		p.addEventListener( "dragenter", this.peteFlip, false );
+		p.addEventListener( "dragleave", this.peteNormal, false );
 		p.addEventListener( "dragover", stop, false );
 		p.addEventListener( "drop", this.dropNote, false );
 
@@ -57,7 +58,25 @@ var Level2 = {
 		stop( e );
 		Level2._note.parentNode.removeChild( Level2._note );
 		GLOBAL.pete.className = "hold_note";
+		setMessage( "<strong>\"INVASION PLAN: TAKE OVER EVERYTHING!\"</strong> <em>(Oh boy.)</em>" );
 		showNextButton();
+	},
+
+
+	/**
+	 * Flip Pete so he faces the dead slime lump.
+	 */
+	peteFlip: function( e ) {
+		stop( e );
+		e.target.className = Level2.pete + " flip_x";
+	},
+
+
+	/**
+	 * Turn flipped Pete back to normal.
+	 */
+	peteNormal: function( e ) {
+		e.target.className = Level2.pete;
 	}
 
 
