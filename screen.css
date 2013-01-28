@@ -54,6 +54,33 @@ button:hover {
 	color: #292929;
 }
 
+#volume {
+	list-style-type: none;
+	margin-top: 10px;
+	text-align: center;
+}
+
+#volume:before {
+	color: #ffffff;
+	content: "Vol.";
+	font-size: 22px;
+	margin-right: 8px;
+	vertical-align: top;
+}
+
+	#volume li {
+		background-color: rgba( 250, 250, 250, 0.4 );
+		cursor: pointer;
+		height: 30px;
+		display: inline-block;
+		margin: 0 3px;
+		width: 10px;
+	}
+
+	#volume li.active {
+		background-color: rgb( 250, 250, 250 );
+	}
+
 #msgBox {
 	background-color: rgba( 55, 72, 82, 0.8 );
 	color: #ffffff;

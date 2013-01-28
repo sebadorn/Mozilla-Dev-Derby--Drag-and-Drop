@@ -4,11 +4,17 @@
 window.addEventListener( "load", init, false );
 
 
+var CONFIG = {
+	volume: 0.3
+};
+
 var GLOBAL = {
+	audio: {},
 	msgBox: null,
 	nextBtn: null,
 	pete: null,
-	stage: null
+	stage: null,
+	volume: null
 };
 
 var PATH;
@@ -18,19 +24,59 @@ var PATH;
  * Init. Get the required DOM objects and start the first level.
  */
 function init() {
-	var d = document;
+	var d = document,
+	    g = GLOBAL,
+	    vol = d.createDocumentFragment(),
+	    v;
 
 	preloadImages();
+	preloadAudio();
 
-	GLOBAL.stage = d.getElementById( "stage" ),
-	GLOBAL.pete = d.getElementById( "pete" ),
-	GLOBAL.msgBox = d.getElementById( "msgBox" );
-	GLOBAL.nextBtn = d.getElementById( "next" );
-	GLOBAL.nextBtn.addEventListener( "click", nextLevel, false );
+	g.stage = d.getElementById( "stage" ),
+	g.pete = d.getElementById( "pete" ),
+	g.msgBox = d.getElementById( "msgBox" );
+	g.nextBtn = d.getElementById( "next" );
+	g.nextBtn.addEventListener( "click", nextLevel, false );
+	g.volume = d.getElementById( "volume" );
+
+	for( var i = 0; i < 10; i++ ) {
+		v = d.createElement( "li" );
+		v.className = ( i <= CONFIG.volume * 10 ) ? "active" : "";
+		v.setAttribute( "data-vol", i );
+		v.addEventListener( "click", changeVolume, false );
+
+		vol.appendChild( v );
+	}
+	g.volume.appendChild( vol );
 
 	PATH = [Level0, Level1, Level2, Level3, Level4];
 
 	nextLevel();
+};
+
+
+/**
+ * Preload the needed sounds.
+ */
+function preloadAudio() {
+	var ga = GLOBAL.audio,
+	    preload = [
+	    	"awesome.ogg",
+	    	"intro.ogg",
+	    	"monster_defeated.ogg",
+	    	"monster_hit.ogg",
+	    	"outro.ogg",
+	    	"uh-oh.ogg"
+	    ],
+	    name;
+
+	for( var i = 0; i < preload.length; i++ ) {
+		name = preload[i];
+		ga[name] = new Audio();
+		ga[name].preload = "auto";
+		ga[name].src = "sound/" + name;
+		ga[name].volume = CONFIG.volume;
+	}
 };
 
 
@@ -59,7 +105,7 @@ function preloadImages() {
 		images[i] = new Image();
 		images[i].src = "img/" + preload[i];
 	}
-}
+};
 
 
 /**
@@ -85,6 +131,11 @@ function clearStage() {
 	for( i = 0; i < del.length; i++ ) {
 		GLOBAL.stage.removeChild( del[i] );
 	}
+
+	// Stop all audio
+	for( var a in GLOBAL.audio ) {
+		GLOBAL.audio[a].src = GLOBAL.audio[a].src;
+	}
 };
 
 
@@ -104,6 +155,36 @@ function nextLevel() {
 	if( props ) {
 		GLOBAL.stage.appendChild( props );
 	}
+};
+
+
+/**
+ * Change audio volume.
+ */
+function changeVolume( e ) {
+	var ga = GLOBAL.audio,
+	    vol = parseInt( e.target.getAttribute( "data-vol" ) ),
+	    newVol = vol / 10,
+	    children = GLOBAL.volume.children;
+
+	for( var audio in ga ) {
+		ga[audio].volume = newVol;
+	}
+
+	for( var i = 0; i < children.length; i++ ) {
+		children[i].className = ( i <= vol ) ? "active" : "";
+	}
+};
+
+
+/**
+ * Play an audio file (ogg).
+ * @param {String} name Name of file without path and file extension.
+ * @param {bool}   loop Loop audio.
+ */
+function playAudio( name, loop ) {
+	GLOBAL.audio[name + ".ogg"].loop = loop;
+	GLOBAL.audio[name + ".ogg"].play();
 };
 
 

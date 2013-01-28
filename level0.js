@@ -13,6 +13,7 @@ var Level0 = {
 	 * Prepare the stage for this level.
 	 */
 	prepareStage: function() {
+		playAudio( "intro", true );
 		showNextButton();
 		return false;
 	}

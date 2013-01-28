@@ -13,10 +13,8 @@ var Level4 = {
 	 * Prepare the stage for this level.
 	 */
 	prepareStage: function() {
-		var d = document;
-		var frag = d.createDocumentFragment();
-
-		return frag;
+		playAudio( "outro", true );
+		return document.createDocumentFragment();
 	}
 
 

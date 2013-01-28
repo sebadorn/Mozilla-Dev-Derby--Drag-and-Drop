@@ -58,6 +58,7 @@ var Level2 = {
 		stop( e );
 		Level2._note.parentNode.removeChild( Level2._note );
 		GLOBAL.pete.className = "hold_note";
+		playAudio( "uh-oh" );
 		setMessage( "<strong>\"INVASION PLAN: TAKE OVER EVERYTHING!\"</strong> <em>(Oh boy.)</em>" );
 		showNextButton();
 	},

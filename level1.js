@@ -61,12 +61,14 @@ var Level1 = {
 	 */
 	defeatMonster: function( size ) {
 		if( size >= Level1.SIZE_TO_DEFEAT_MONSTER ) {
+			playAudio( "monster_defeated" );
 			Level1._monster.className = "monster defeated";
 			GLOBAL.pete.className = "slime";
 			setMessage( "Well, that did the job." );
 			showNextButton();
 		}
 		else {
+			playAudio( "monster_hit" );
 			setMessage( "This slime monster can take at least 1 MB!" );
 		}
 	},

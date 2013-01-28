@@ -52,6 +52,7 @@ var Level3 = {
 
 			reader.onload = function() {
 				Level3._shirt.src = reader.result;
+				playAudio( "awesome" );
 				setMessage( "Awesome!" );
 				showNextButton();
 			}
