@@ -7,12 +7,12 @@ window.addEventListener( "load", init, false );
 var CONFIG = {
 	preload: {
 		audio: [
-			"awesome.ogg",
 			"intro.ogg",
-			"monster_defeated.ogg",
 			"monster_hit.ogg",
-			"outro.ogg",
-			"uh-oh.ogg"
+			"monster_defeated.ogg",
+			"uh-oh.ogg",
+			"awesome.ogg",
+			"outro.ogg"
 	    ],
 	    images: [
 			"level0.gif",
