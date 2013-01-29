@@ -5,7 +5,32 @@ window.addEventListener( "load", init, false );
 
 
 var CONFIG = {
-	volume: 0.3
+	preload: {
+		audio: [
+			"awesome.ogg",
+			"intro.ogg",
+			"monster_defeated.ogg",
+			"monster_hit.ogg",
+			"outro.ogg",
+			"uh-oh.ogg"
+	    ],
+	    images: [
+			"level0.gif",
+			"level4.gif",
+			"monster.gif",
+			"monster_defeated.gif",
+			"note.gif",
+			"pete_back.gif",
+			"pete_back_slime.gif",
+			"pete_fight.gif",
+			"pete_note.gif",
+			"pete_onwards.gif",
+			"pete_shirt.gif",
+			"pete_slime.gif",
+			"shirt_placeholder.gif"
+		]
+	},
+	volume: 0.4
 };
 
 var GLOBAL = {
@@ -39,18 +64,20 @@ function init() {
 	g.nextBtn.addEventListener( "click", nextLevel, false );
 	g.volume = d.getElementById( "volume" );
 
+	// Add volume bar control
 	for( var i = 0; i < 10; i++ ) {
 		v = d.createElement( "li" );
 		v.className = ( i <= CONFIG.volume * 10 ) ? "active" : "";
 		v.setAttribute( "data-vol", i );
 		v.addEventListener( "click", changeVolume, false );
-
 		vol.appendChild( v );
 	}
 	g.volume.appendChild( vol );
 
+	// Set order of levels
 	PATH = [Level0, Level1, Level2, Level3, Level4];
 
+	// Start first level
 	nextLevel();
 };
 
@@ -60,14 +87,7 @@ function init() {
  */
 function preloadAudio() {
 	var ga = GLOBAL.audio,
-	    preload = [
-	    	"awesome.ogg",
-	    	"intro.ogg",
-	    	"monster_defeated.ogg",
-	    	"monster_hit.ogg",
-	    	"outro.ogg",
-	    	"uh-oh.ogg"
-	    ],
+	    preload = CONFIG.preload.audio,
 	    name;
 
 	for( var i = 0; i < preload.length; i++ ) {
@@ -85,21 +105,7 @@ function preloadAudio() {
  */
 function preloadImages() {
 	var images = [],
-	    preload = [
-	    	"level0.gif",
-	    	"level4.gif",
-	    	"monster.gif",
-	    	"monster_defeated.gif",
-	    	"note.gif",
-	    	"pete_back.gif",
-	    	"pete_back_slime.gif",
-	    	"pete_fight.gif",
-	    	"pete_note.gif",
-	    	"pete_onwards.gif",
-	    	"pete_shirt.gif",
-	    	"pete_slime.gif",
-	    	"shirt_placeholder.gif"
-	    ];
+	    preload = CONFIG.preload.images;
 
 	for( var i = 0; i < preload.length; i++ ) {
 		images[i] = new Image();
